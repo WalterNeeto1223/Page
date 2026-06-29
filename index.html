@@ -1,141 +1,501 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WN Web | Portfólio</title>
+    <title>WN Web | Landing Page</title>
+    <meta
+      name="description"
+      content="Sites e sistemas web sob medida para negócios locais. Landing page criada por Walter Neto - WN Web."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: "#ecfdf5",
+                100: "#d1fae5",
+                400: "#34d399",
+                500: "#10b981",
+                600: "#059669",
+                700: "#047857"
+              },
+              ink: {
+                900: "#07111f",
+                800: "#0b1628",
+                700: "#111f35"
+              }
+            },
+            boxShadow: {
+              glow: "0 0 40px rgba(16, 185, 129, 0.25)",
+              card: "0 24px 80px rgba(0, 0, 0, 0.35)"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      body {
+        background:
+          radial-gradient(circle at top left, rgba(16, 185, 129, 0.20), transparent 34rem),
+          radial-gradient(circle at 80% 10%, rgba(59, 130, 246, 0.16), transparent 32rem),
+          #07111f;
+      }
+
+      .glass {
+        background: rgba(11, 22, 40, 0.72);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+      }
+
+      .media-frame {
+        position: relative;
+      }
+
+      .media-frame::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: 1.6rem;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(52, 211, 153, 0.9), rgba(59, 130, 246, 0.35), rgba(255, 255, 255, 0.08));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      .shine {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .shine::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: translateX(-120%);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+        animation: shine 5s infinite;
+      }
+
+      @keyframes shine {
+        0%, 55% { transform: translateX(-120%); }
+        75%, 100% { transform: translateX(120%); }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .shine::after {
+          animation: none;
+        }
+
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
   </head>
 
-  <body class="bg-gray-900 text-gray-100 font-sans antialiased">
-    <header class="p-6 text-center text-3xl font-bold text-green-400">
-      WN Web
+  <body class="font-sans text-slate-100 antialiased">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 glass">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+        <a href="#inicio" class="group flex items-center gap-3" aria-label="WN Web - Início">
+          <div class="grid h-10 w-10 place-items-center rounded-2xl bg-brand-500 font-black text-ink-900 shadow-glow">
+            WN
+          </div>
+          <div>
+            <p class="text-sm font-bold leading-none text-white">WN Web</p>
+            <p class="mt-1 text-xs text-slate-400">Sites & sistemas sob medida</p>
+          </div>
+        </a>
+
+        <button
+          id="menuBtn"
+          class="rounded-xl border border-white/10 px-3 py-2 text-sm text-slate-200 md:hidden"
+          aria-label="Abrir menu"
+        >
+          ☰
+        </button>
+
+        <div id="menu" class="hidden items-center gap-6 text-sm font-medium text-slate-300 md:flex">
+          <a class="transition hover:text-brand-400" href="#solucao">Solução</a>
+          <a class="transition hover:text-brand-400" href="#servicos">Serviços</a>
+          <a class="transition hover:text-brand-400" href="#demos">Demonstrações</a>
+          <a
+            class="rounded-full bg-white px-5 py-2.5 font-bold text-ink-900 transition hover:bg-brand-100"
+            href="https://wa.me/5582996997703?text=Ol%C3%A1,%20Walter!%20Acessei%20o%20site%20da%20WN%20Web%20e%20quero%20fazer%20um%20or%C3%A7amento."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Orçamento grátis
+          </a>
+        </div>
+      </nav>
+
+      <div id="mobileMenu" class="hidden border-t border-white/10 px-5 pb-5 md:hidden">
+        <div class="grid gap-3 pt-4 text-sm font-medium text-slate-300">
+          <a class="rounded-xl px-3 py-2 hover:bg-white/5" href="#solucao">Solução</a>
+          <a class="rounded-xl px-3 py-2 hover:bg-white/5" href="#servicos">Serviços</a>
+          <a class="rounded-xl px-3 py-2 hover:bg-white/5" href="#demos">Demonstrações</a>
+          <a
+            class="rounded-xl bg-brand-500 px-3 py-3 text-center font-bold text-ink-900"
+            href="https://wa.me/5582996997703?text=Ol%C3%A1,%20Walter!%20Acessei%20o%20site%20da%20WN%20Web%20e%20quero%20fazer%20um%20or%C3%A7amento."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Chamar no WhatsApp
+          </a>
+        </div>
+      </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 text-center mt-10">
-      <h1 class="text-4xl md:text-5xl font-bold mb-8 text-white">
-        A ponte digital do seu negócio começa aqui.
-      </h1>
-
-      <div class="mb-4 rounded-xl overflow-hidden shadow-2xl border border-gray-700">
-        <video autoplay loop muted playsinline class="w-full">
-          <source src="midia/telanote.mov" />
-        </video>
-      </div>
-      <h3 class="text-xl font-semibold mb-16 text-gray-400">
-        100% Responsivo: Funcionamento perfeito em computadores, tablets e celulares.
-      </h3>
-
-      <section class="mb-20 text-left bg-gray-800/50 p-8 rounded-2xl border border-gray-700 shadow-xl">
-        <div class="grid md:grid-cols-2 gap-8">
+    <main>
+      <section id="inicio" class="relative overflow-hidden px-5 pb-20 pt-32 lg:px-8 lg:pb-28 lg:pt-40">
+        <div class="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
           <div>
-            <h3 class="text-2xl font-bold text-green-400 mb-4">O que é essa "Ponte"?</h3>
-            <p class="text-gray-300 leading-relaxed mb-4">
-              A ponte digital é a conexão direta entre o seu melhor produto e o celular do seu cliente. Não é apenas um "site bonito" que fica parado na internet.
+            <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-brand-400/30 bg-brand-400/10 px-4 py-2 text-sm font-semibold text-brand-100">
+              <span class="h-2 w-2 rounded-full bg-brand-400"></span>
+              Desenvolvimento web para negócios locais
+            </div>
+
+            <h1 class="max-w-3xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-7xl">
+              A ponte digital que transforma visitantes em
+              <span class="bg-gradient-to-r from-brand-400 to-emerald-200 bg-clip-text text-transparent">clientes reais.</span>
+            </h1>
+
+            <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
+              Crio sites, landing pages e sistemas personalizados para sua empresa aparecer melhor,
+              receber mais contatos e organizar processos sem depender de soluções genéricas.
             </p>
-            <p class="text-gray-300 leading-relaxed">
-              É o seu <strong>vendedor trabalhando 24 horas por dia</strong>. É um sistema inteligente que recebe pedidos, organiza o fluxo do seu caixa e passa credibilidade, fazendo o cliente escolher você, e não a concorrência.
-            </p>
+
+            <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="https://wa.me/5582996997703?text=Ol%C3%A1,%20Walter!%20Acessei%20o%20site%20da%20WN%20Web%20e%20quero%20fazer%20um%20or%C3%A7amento."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="shine rounded-full bg-brand-500 px-7 py-4 text-center text-base font-black text-ink-900 shadow-glow transition hover:-translate-y-0.5 hover:bg-brand-400"
+              >
+                Quero construir minha ponte digital
+              </a>
+              <a
+                href="#demos"
+                class="rounded-full border border-white/15 px-7 py-4 text-center text-base font-bold text-white transition hover:-translate-y-0.5 hover:border-brand-400/50 hover:bg-white/5"
+              >
+                Ver demonstrações
+              </a>
+            </div>
+
+            <div class="mt-10 grid max-w-xl grid-cols-3 gap-3">
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                <p class="text-2xl font-black text-white">100%</p>
+                <p class="mt-1 text-xs text-slate-400">Responsivo</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                <p class="text-2xl font-black text-white">24h</p>
+                <p class="mt-1 text-xs text-slate-400">Online</p>
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+                <p class="text-2xl font-black text-white">Sob</p>
+                <p class="mt-1 text-xs text-slate-400">medida</p>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <h3 class="text-2xl font-bold text-white mb-4">Por que fugir de sites genéricos ou IA?</h3>
-            <p class="text-gray-300 leading-relaxed mb-4">
-              A Inteligência Artificial e os "criadores de site" entregam projetos padronizados, iguais a milhares de outros. Eles não entendem a realidade do seu comércio.
-            </p>
-            <p class="text-gray-300 leading-relaxed">
-              Trabalhar com um <strong>desenvolvedor dedicado</strong> significa ter um sistema de gestão moldado exatamente para a sua rotina. É ter suporte real, tecnologia sob medida e alguém que entende as dores do seu negócio de perto.
-            </p>
+          <div class="media-frame rounded-[1.6rem] bg-ink-800/80 p-3 shadow-card">
+            <div class="overflow-hidden rounded-[1.2rem] border border-white/10 bg-black">
+              <video autoplay loop muted playsinline class="w-full">
+                <source src="midia/telanote.mov" />
+              </video>
+            </div>
+            <div class="grid gap-3 p-4 sm:grid-cols-3">
+              <div class="rounded-2xl bg-white/[0.04] p-4">
+                <p class="text-xs text-slate-400">Interface</p>
+                <p class="mt-1 font-bold text-white">Moderna</p>
+              </div>
+              <div class="rounded-2xl bg-white/[0.04] p-4">
+                <p class="text-xs text-slate-400">Layout</p>
+                <p class="mt-1 font-bold text-white">Adaptável</p>
+              </div>
+              <div class="rounded-2xl bg-white/[0.04] p-4">
+                <p class="text-xs text-slate-400">Objetivo</p>
+                <p class="mt-1 font-bold text-white">Conversão</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-white mt-10">
-        Sistemas sob medida e sites de alta conversão para destacar sua empresa.
-      </h2>
+      <section id="solucao" class="px-5 py-20 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="mx-auto max-w-3xl text-center">
+            <p class="text-sm font-bold uppercase tracking-[0.25em] text-brand-400">A solução</p>
+            <h2 class="mt-4 text-3xl font-black tracking-tight text-white sm:text-5xl">
+              Não é só um site bonito. É uma ferramenta de venda.
+            </h2>
+            <p class="mt-5 text-slate-300">
+              Uma boa presença digital precisa explicar, convencer e facilitar o contato do cliente.
+              Por isso, cada seção é pensada para levar a pessoa até a ação principal.
+            </p>
+          </div>
 
-      <div class="mb-4 rounded-xl overflow-hidden shadow-2xl border border-gray-700 max-w-sm mx-auto bg-black">
-        <video loop muted playsinline preload="none" class="w-full lazy-video">
-          <source data-src="midia/telacel.mp4" />
-        </video>
-      </div>
-      <h3 class="text-xl font-semibold mt-16 text-gray-400 max-w-2xl mx-auto">
-        Banco de Dados Robusto: Segurança máxima para suportar milhares de acessos e organizar o fluxo do seu negócio.
-      </h3>
+          <div class="mt-12 grid gap-5 md:grid-cols-3">
+            <article class="rounded-3xl border border-white/10 bg-white/[0.04] p-7 transition hover:-translate-y-1 hover:border-brand-400/40">
+              <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-brand-400/15 text-2xl">🎯</div>
+              <h3 class="text-xl font-black text-white">Mensagem clara</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-300">
+                O visitante entende rapidamente o que você vende, para quem vende e por que deveria chamar você.
+              </p>
+            </article>
 
-      <div class="rounded-xl overflow-hidden shadow-2xl border border-gray-700 max-w-sm mx-auto bg-black">
-        <video loop muted playsinline preload="none" class="w-full lazy-video">
-          <source data-src="midia/bd.mp4" />
-        </video>
-      </div>
-      <h3 class="text-xl font-semibold mt-16 text-gray-400 max-w-2xl mx-auto">
-        Hospedagem em Nuvem: Sua empresa online 24 horas por dia, sem lentidão e sem quedas. Carregamento ultrarrápido para não perder nenhuma venda.
-      </h3>
+            <article class="rounded-3xl border border-white/10 bg-white/[0.04] p-7 transition hover:-translate-y-1 hover:border-brand-400/40">
+              <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-brand-400/15 text-2xl">📱</div>
+              <h3 class="text-xl font-black text-white">Experiência responsiva</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-300">
+                O layout se adapta para celular, tablet e computador, mantendo o visual profissional em qualquer tela.
+              </p>
+            </article>
 
-      <div class="mb-4 rounded-xl overflow-hidden shadow-2xl border border-gray-700 max-w-sm mx-auto bg-black">
-        <video loop muted playsinline preload="none" class="w-full lazy-video">
-          <source data-src="midia/server.mp4" />
-        </video>
-      </div>
-      <h3 class="text-xl font-semibold mt-16 text-gray-400 max-w-2xl mx-auto">
-        Segurança de Nível Bancário: Criptografia avançada protegendo senhas e informações confidenciais. Tranquilidade total para você e seus clientes.
-      </h3>
+            <article class="rounded-3xl border border-white/10 bg-white/[0.04] p-7 transition hover:-translate-y-1 hover:border-brand-400/40">
+              <div class="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-brand-400/15 text-2xl">⚙️</div>
+              <h3 class="text-xl font-black text-white">Sistema sob medida</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-300">
+                Além da página, seu negócio pode ter painel, banco de dados, login, pedidos e automações.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      <div class="mb-4 rounded-xl overflow-hidden shadow-2xl border border-gray-700 max-w-sm mx-auto bg-black">
-        <video loop muted playsinline preload="none" class="w-full lazy-video">
-          <source data-src="midia/cript.mp4" />
-        </video>
-      </div>
+      <section class="px-5 py-20 lg:px-8">
+        <div class="mx-auto grid max-w-7xl gap-10 rounded-[2rem] border border-white/10 bg-white/[0.04] p-6 shadow-card md:grid-cols-2 md:p-10">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.25em] text-brand-400">Por que personalizado?</p>
+            <h2 class="mt-4 text-3xl font-black text-white">Fuja do “site igual a todo mundo”.</h2>
+            <p class="mt-5 leading-8 text-slate-300">
+              Criadores automáticos e modelos prontos podem até parecer práticos, mas normalmente entregam páginas genéricas.
+              Um projeto feito sob medida considera a rotina do negócio, o público, o tipo de venda e o melhor caminho para gerar contato.
+            </p>
+          </div>
 
-      <img
-        src="midia/whatsapp-icon.png"
-        alt="Whatsapp icon"
-        width="100"
-        class="mx-auto mb-0 block border-white mt-10"
-      />
+          <div class="grid gap-4">
+            <div class="rounded-2xl border border-white/10 bg-ink-800/70 p-5">
+              <p class="font-black text-white">✓ Visual alinhado com sua marca</p>
+              <p class="mt-2 text-sm text-slate-400">Cores, textos e estrutura pensados para o seu serviço.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-ink-800/70 p-5">
+              <p class="font-black text-white">✓ Suporte direto com o desenvolvedor</p>
+              <p class="mt-2 text-sm text-slate-400">Você fala com quem realmente está construindo o projeto.</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-ink-800/70 p-5">
+              <p class="font-black text-white">✓ Possibilidade de evoluir para sistema</p>
+              <p class="mt-2 text-sm text-slate-400">O site pode crescer para painel, cadastro, agenda ou gestão interna.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <div class="mt-0 mb-8">
-        <a
-          href="https://wa.me/5582996997703?text=Ol%C3%A1,%20Walter!%20Acessei%20o%20site%20da%20WN%20Web%20e%20percebi%20que%20meu%20neg%C3%B3cio%20precisa%20construir%20essa%20ponte%20digital.%20Quero%20saber%20mais%20sobre%20os%20sites%20e%20sistemas.%20Podemos%20conversar?"
-          class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold text-xl py-4 px-10 rounded-full shadow-lg transition duration-300 transform hover:scale-105"
-        >
-          Quero construir essa ponte!
-        </a>
-        <p class="text-gray-500 mt-4 text-sm">
-          Faça um orçamento gratuito e sem compromisso.
-        </p>
-      </div>
+      <section id="servicos" class="px-5 py-20 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+            <div>
+              <p class="text-sm font-bold uppercase tracking-[0.25em] text-brand-400">Serviços</p>
+              <h2 class="mt-4 max-w-2xl text-3xl font-black tracking-tight text-white sm:text-5xl">
+                Do primeiro site ao sistema completo.
+              </h2>
+            </div>
+            <p class="max-w-md text-slate-300">
+              Escolha o nível ideal para o momento da sua empresa e evolua conforme o negócio crescer.
+            </p>
+          </div>
+
+          <div class="mt-12 grid gap-5 lg:grid-cols-4">
+            <article class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+              <p class="text-sm font-bold text-brand-400">01</p>
+              <h3 class="mt-4 text-xl font-black text-white">Landing Page</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-300">Página focada em apresentar uma oferta e levar o cliente para o WhatsApp.</p>
+            </article>
+
+            <article class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+              <p class="text-sm font-bold text-brand-400">02</p>
+              <h3 class="mt-4 text-xl font-black text-white">Site Institucional</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-300">Estrutura completa para empresa, com páginas, serviços, galeria e contato.</p>
+            </article>
+
+            <article class="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+              <p class="text-sm font-bold text-brand-400">03</p>
+              <h3 class="mt-4 text-xl font-black text-white">E-commerce</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-300">Catálogo, carrinho e finalização de pedido para vender produtos online.</p>
+            </article>
+
+            <article class="rounded-3xl border border-brand-400/40 bg-brand-400/10 p-6 shadow-glow">
+              <p class="text-sm font-bold text-brand-300">04</p>
+              <h3 class="mt-4 text-xl font-black text-white">Sistema de Gestão</h3>
+              <p class="mt-3 text-sm leading-7 text-slate-200">Painel com login, banco de dados, cadastros, relatórios e controle interno.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="demos" class="px-5 py-20 lg:px-8">
+        <div class="mx-auto max-w-7xl">
+          <div class="mx-auto max-w-3xl text-center">
+            <p class="text-sm font-bold uppercase tracking-[0.25em] text-brand-400">Demonstrações</p>
+            <h2 class="mt-4 text-3xl font-black tracking-tight text-white sm:text-5xl">
+              Veja como a solução aparece na prática.
+            </h2>
+            <p class="mt-5 text-slate-300">
+              As prévias abaixo mostram responsividade, banco de dados, hospedagem e segurança em uma apresentação simples para o cliente entender.
+            </p>
+          </div>
+
+          <div class="mt-14 grid gap-8 lg:grid-cols-2">
+            <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-card">
+              <div class="mx-auto max-w-xs overflow-hidden rounded-[1.6rem] border border-white/10 bg-black">
+                <video loop muted playsinline preload="none" class="lazy-video w-full">
+                  <source data-src="midia/telacel.mp4" />
+                </video>
+              </div>
+              <div class="p-5 text-center">
+                <h3 class="text-2xl font-black text-white">Layout para celular</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-300">
+                  Seu cliente consegue navegar, entender e chamar no WhatsApp sem dificuldade pelo smartphone.
+                </p>
+              </div>
+            </article>
+
+            <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-card">
+              <div class="mx-auto max-w-xs overflow-hidden rounded-[1.6rem] border border-white/10 bg-black">
+                <video loop muted playsinline preload="none" class="lazy-video w-full">
+                  <source data-src="midia/bd.mp4" />
+                </video>
+              </div>
+              <div class="p-5 text-center">
+                <h3 class="text-2xl font-black text-white">Banco de dados</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-300">
+                  Cadastros, pedidos e informações podem ficar organizados em uma estrutura preparada para crescer.
+                </p>
+              </div>
+            </article>
+
+            <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-card">
+              <div class="mx-auto max-w-xs overflow-hidden rounded-[1.6rem] border border-white/10 bg-black">
+                <video loop muted playsinline preload="none" class="lazy-video w-full">
+                  <source data-src="midia/server.mp4" />
+                </video>
+              </div>
+              <div class="p-5 text-center">
+                <h3 class="text-2xl font-black text-white">Hospedagem em nuvem</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-300">
+                  O projeto pode ficar publicado online para acesso por link, com estrutura adequada para o tipo de site.
+                </p>
+              </div>
+            </article>
+
+            <article class="rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 shadow-card">
+              <div class="mx-auto max-w-xs overflow-hidden rounded-[1.6rem] border border-white/10 bg-black">
+                <video loop muted playsinline preload="none" class="lazy-video w-full">
+                  <source data-src="midia/cript.mp4" />
+                </video>
+              </div>
+              <div class="p-5 text-center">
+                <h3 class="text-2xl font-black text-white">Boas práticas de segurança</h3>
+                <p class="mt-3 text-sm leading-7 text-slate-300">
+                  Login, senhas e dados precisam ser tratados com cuidado, usando práticas adequadas para cada projeto.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-5 py-20 lg:px-8">
+        <div class="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-brand-400/30 bg-gradient-to-br from-brand-500 to-brand-700 p-1 shadow-glow">
+          <div class="rounded-[1.75rem] bg-ink-900 p-8 text-center md:p-12">
+            <img
+              src="midia/whatsapp-icon.png"
+              alt="Ícone do WhatsApp"
+              width="92"
+              height="92"
+              class="mx-auto mb-6 block"
+            />
+            <h2 class="text-3xl font-black tracking-tight text-white sm:text-5xl">
+              Quer um site que realmente ajude a vender?
+            </h2>
+            <p class="mx-auto mt-5 max-w-2xl text-slate-300">
+              Me chame no WhatsApp, explique seu negócio e eu te ajudo a escolher entre landing page,
+              site institucional, e-commerce ou sistema de gestão.
+            </p>
+
+            <a
+              href="https://wa.me/5582996997703?text=Ol%C3%A1,%20Walter!%20Acessei%20o%20site%20da%20WN%20Web%20e%20percebi%20que%20meu%20neg%C3%B3cio%20precisa%20construir%20essa%20ponte%20digital.%20Quero%20saber%20mais%20sobre%20os%20sites%20e%20sistemas.%20Podemos%20conversar?"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-8 inline-flex rounded-full bg-brand-500 px-8 py-4 text-lg font-black text-ink-900 shadow-glow transition hover:-translate-y-0.5 hover:bg-brand-400"
+            >
+              Fazer orçamento gratuito
+            </a>
+
+            <p class="mt-4 text-sm text-slate-500">Sem compromisso. Atendimento direto com o desenvolvedor.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="p-6 text-center text-gray-500 text-sm mt-10 border-t border-gray-800">
-      Site criado por Walter Neto - WN Web &copy; 2026
+    <footer class="border-t border-white/10 px-5 py-8 text-center text-sm text-slate-500">
+      <p class="font-semibold text-slate-300">WN Web</p>
+      <p class="mt-2">Site criado por Walter Neto · &copy; 2026</p>
     </footer>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        let lazyVideos = document.querySelectorAll("video.lazy-video");
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      menuBtn?.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      mobileMenu?.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => mobileMenu.classList.add("hidden"));
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const lazyVideos = document.querySelectorAll("video.lazy-video");
+
+        const loadVideo = (videoElement) => {
+          const source = videoElement.querySelector("source");
+          if (!source || source.src) return;
+
+          source.src = source.getAttribute("data-src");
+          videoElement.load();
+
+          const playPromise = videoElement.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {
+              // Alguns navegadores bloqueiam autoplay. O vídeo continua carregado.
+            });
+          }
+        };
 
         if ("IntersectionObserver" in window) {
-          let lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
-            entries.forEach(function(video) {
-              if (video.isIntersecting) {
-                let videoElement = video.target;
-                let source = videoElement.querySelector("source");
-                
-                // Transforma o data-src em src real quando chega na tela
-                source.src = source.getAttribute("data-src");
-                videoElement.load();
-                videoElement.play(); // Dá o play automático
-                
-                // Para de observar depois que já carregou
-                lazyVideoObserver.unobserve(videoElement);
-              }
-            });
-          });
+          const lazyVideoObserver = new IntersectionObserver(
+            function (entries, observer) {
+              entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                  loadVideo(entry.target);
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { rootMargin: "160px 0px" }
+          );
 
-          lazyVideos.forEach(function(lazyVideo) {
+          lazyVideos.forEach(function (lazyVideo) {
             lazyVideoObserver.observe(lazyVideo);
           });
+        } else {
+          lazyVideos.forEach(loadVideo);
         }
       });
     </script>
